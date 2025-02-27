@@ -7,7 +7,7 @@ import requests
 from io import StringIO
 
 # Import the XSS scanner functions to test
-from websca import (
+from cli import (
     get_all_forms,
     get_form_details,
     submit_form,
@@ -159,9 +159,9 @@ class TestXSSScanner(unittest.TestCase):
         mock_system.assert_called_with("clear")
         print("Test 7: clear_screen uses 'clear' on Linux systems ✅")
         
-    @patch('websca.get_all_forms')
-    @patch('websca.get_form_details')
-    @patch('websca.submit_form')
+    @patch('cli.get_all_forms')
+    @patch('cli.get_form_details')
+    @patch('cli.submit_form')
     def test_scan_xss_vulnerability_detected(self, mock_submit, mock_details, mock_forms):
         """Test 8: Test XSS vulnerability detection."""
         # Setup mocks
@@ -198,9 +198,9 @@ class TestXSSScanner(unittest.TestCase):
         self.assertIn("XSS Detected", output)
         print("Test 8: scan_xss correctly identifies XSS vulnerabilities ✅")
             
-    @patch('websca.get_all_forms')
-    @patch('websca.get_form_details')
-    @patch('websca.submit_form')
+    @patch('cli.get_all_forms')
+    @patch('cli.get_form_details')
+    @patch('cli.submit_form')
     def test_scan_xss_no_vulnerability(self, mock_submit, mock_details, mock_forms):
         """Test 9: Test when no XSS vulnerability is found."""
         # Setup mocks
